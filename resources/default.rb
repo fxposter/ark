@@ -66,3 +66,4 @@ attribute :make_opts, kind_of: Array, default: []
 attribute :home_dir, kind_of: String, default: nil
 attribute :autoconf_opts, kind_of: Array, default: []
 attribute :extension, kind_of: String
+attribute :cache_backup, kind_of: [String, Fixnum], default: nil
