@@ -42,6 +42,7 @@ action :install do
     Chef::Log.debug('DEBUG: new_resource.release_file')
     source new_resource.url
     checksum new_resource.checksum if new_resource.checksum
+    backup new_resource.cache_backup if new_resource.cache_backup
     action :create
     notifies :run, "execute[unpack #{new_resource.release_file}]"
   end
@@ -129,6 +130,7 @@ action :put do
   remote_file new_resource.release_file do
     source new_resource.url
     checksum new_resource.checksum if new_resource.checksum
+    backup new_resource.cache_backup if new_resource.cache_backup
     action :create
     notifies :run, "execute[unpack #{new_resource.release_file}]"
   end
@@ -179,6 +181,7 @@ action :dump do
     Chef::Log.debug("DEBUG: new_resource.release_file #{new_resource.release_file}")
     source new_resource.url
     checksum new_resource.checksum if new_resource.checksum
+    backup new_resource.cache_backup if new_resource.cache_backup
     action :create
     notifies :run, "execute[unpack #{new_resource.release_file}]"
   end
@@ -217,6 +220,7 @@ action :unzip do
     Chef::Log.debug("DEBUG: new_resource.release_file #{new_resource.release_file}")
     source new_resource.url
     checksum new_resource.checksum if new_resource.checksum
+    backup new_resource.cache_backup if new_resource.cache_backup
     action :create
     notifies :run, "execute[unpack #{new_resource.release_file}]"
   end
@@ -267,6 +271,7 @@ action :cherry_pick do
   remote_file new_resource.release_file do
     source new_resource.url
     checksum new_resource.checksum if new_resource.checksum
+    backup new_resource.cache_backup if new_resource.cache_backup
     action :create
     notifies :run, "execute[cherry_pick #{new_resource.creates} from #{new_resource.release_file}]"
   end
@@ -302,6 +307,7 @@ action :install_with_make do
     Chef::Log.debug('DEBUG: new_resource.release_file')
     source new_resource.url
     checksum new_resource.checksum if new_resource.checksum
+    backup new_resource.cache_backup if new_resource.cache_backup
     action :create
     notifies :run, "execute[unpack #{new_resource.release_file}]"
   end
@@ -383,6 +389,7 @@ action :setup_py_build do
     Chef::Log.debug('DEBUG: new_resource.release_file')
     source new_resource.url
     checksum new_resource.checksum if new_resource.checksum
+    backup new_resource.cache_backup if new_resource.cache_backup
     action :create
     notifies :run, "execute[unpack #{new_resource.release_file}]"
   end
@@ -437,6 +444,7 @@ action :setup_py_install do
     Chef::Log.debug('DEBUG: new_resource.release_file')
     source new_resource.url
     checksum new_resource.checksum if new_resource.checksum
+    backup new_resource.cache_backup if new_resource.cache_backup
     action :create
     notifies :run, "execute[unpack #{new_resource.release_file}]"
   end
@@ -491,6 +499,7 @@ action :setup_py do
     Chef::Log.debug('DEBUG: new_resource.release_file')
     source new_resource.url
     checksum new_resource.checksum if new_resource.checksum
+    backup new_resource.cache_backup if new_resource.cache_backup
     action :create
     notifies :run, "execute[unpack #{new_resource.release_file}]"
   end
@@ -545,6 +554,7 @@ action :configure do
     Chef::Log.debug('DEBUG: new_resource.release_file')
     source new_resource.url
     checksum new_resource.checksum if new_resource.checksum
+    backup new_resource.cache_backup if new_resource.cache_backup
     action :create
     notifies :run, "execute[unpack #{new_resource.release_file}]"
   end
